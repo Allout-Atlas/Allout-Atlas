@@ -87,6 +87,29 @@ a {
   }
 }
 
+@keyframes revealLine {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes floatPulse {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .topbar {
   display: flex;
   align-items: center;
@@ -96,6 +119,7 @@ a {
   top: 0;
   z-index: 10;
   background: #0b0c10;
+  border-bottom: 1px solid #141821;
 }
 
 .brand {
@@ -111,6 +135,7 @@ a {
   height: 52px;
   object-fit: contain;
   display: block;
+  animation: floatPulse 6s ease-in-out infinite;
 }
 
 .nav {
@@ -138,6 +163,7 @@ a {
   gap: 60px;
   align-items: center;
   animation: fadeRise 700ms ease both;
+  position: relative;
 }
 
 .hero h1 {
@@ -176,6 +202,13 @@ a {
 .hero-metrics span {
   color: var(--muted);
   font-size: 13px;
+}
+
+.hero-metrics div {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid #232735;
+  background: #12151d;
 }
 
 .btn {
@@ -238,6 +271,15 @@ a {
   margin-bottom: 26px;
 }
 
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -256,6 +298,10 @@ a {
 .feature-card:hover {
   transform: translateY(-4px);
   border-color: #3a4150;
+}
+
+.feature-card {
+  animation: fadeRise 800ms ease both;
 }
 
 .feature-card h3 {
@@ -316,6 +362,7 @@ a {
   border: 1px solid var(--panel-border);
   border-radius: 16px;
   padding: 20px;
+  animation: fadeRise 900ms ease both;
 }
 
 .workflow-card h3 {
@@ -342,19 +389,11 @@ a {
   font-size: 12px;
   color: var(--muted);
   background: #11141b;
+  animation: revealLine 650ms ease both;
 }
 
 .showcase {
   padding: 8vh 6vw;
-}
-
-.section-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 18px;
-  color: var(--muted);
-  margin-bottom: 22px;
 }
 
 .showcase-card {
@@ -364,6 +403,7 @@ a {
   background: var(--panel);
   display: grid;
   gap: 10px;
+  animation: fadeRise 900ms ease both;
 }
 
 .showcase-card img {
@@ -389,6 +429,7 @@ a {
   border: 1px solid var(--panel-border);
   border-radius: 16px;
   padding: 18px;
+  animation: fadeRise 900ms ease both;
 }
 
 .faq-item h4 {
