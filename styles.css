@@ -280,10 +280,26 @@ a {
   margin-bottom: 22px;
 }
 
-.feature-grid {
+.feature-slider {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.feature-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(240px, 1fr);
   gap: 18px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.feature-track::-webkit-scrollbar {
+  height: 0;
 }
 
 .feature-card {
@@ -293,6 +309,7 @@ a {
   padding: 20px;
   min-height: 160px;
   transition: transform 200ms ease, border 200ms ease;
+  scroll-snap-align: start;
 }
 
 .feature-card:hover {
@@ -413,35 +430,6 @@ a {
   display: block;
 }
 
-.faq {
-  padding: 8vh 6vw;
-  border-top: 1px solid #1f232d;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
-}
-
-.faq-item {
-  background: var(--panel);
-  border: 1px solid var(--panel-border);
-  border-radius: 16px;
-  padding: 18px;
-  animation: fadeRise 900ms ease both;
-}
-
-.faq-item h4 {
-  margin: 0 0 10px;
-}
-
-.faq-item p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.55;
-}
-
 
 .download-card h4 {
   margin: 0 0 8px;
@@ -484,5 +472,11 @@ a {
   }
   .section-copy {
     max-width: none;
+  }
+  .feature-slider {
+    grid-template-columns: 1fr;
+  }
+  .feature-slider .slider-btn {
+    display: none;
   }
 }
