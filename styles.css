@@ -110,6 +110,44 @@ a {
   }
 }
 
+@keyframes glowSweep {
+  0% {
+    opacity: 0.2;
+    transform: translateX(-20%);
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateX(120%);
+  }
+}
+
+@keyframes softPulse {
+  0% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes borderScan {
+  0% {
+    border-color: #1f232d;
+  }
+  50% {
+    border-color: #3a4150;
+  }
+  100% {
+    border-color: #1f232d;
+  }
+}
+
 .topbar {
   display: flex;
   align-items: center;
@@ -120,6 +158,7 @@ a {
   z-index: 10;
   background: #0b0c10;
   border-bottom: 1px solid #141821;
+  animation: fadeRise 600ms ease both;
 }
 
 .brand {
@@ -128,6 +167,7 @@ a {
   gap: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
+  animation: fadeRise 700ms ease both;
 }
 
 .brand-logo {
@@ -149,11 +189,26 @@ a {
   padding: 8px 12px;
   border-radius: 999px;
   transition: color 160ms ease, background 160ms ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .nav a:hover {
   color: var(--text);
   background: #171a22;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  transform: translateX(-120%);
+  transition: transform 400ms ease;
+}
+
+.nav a:hover::after {
+  transform: translateX(120%);
 }
 
 .hero {
@@ -166,10 +221,23 @@ a {
   position: relative;
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 6vw;
+  right: 6vw;
+  bottom: -12px;
+  height: 1px;
+  background: #1f232d;
+  transform-origin: left;
+  animation: revealLine 900ms ease both;
+}
+
 .hero h1 {
   font-size: clamp(36px, 6vw, 64px);
   line-height: 1.05;
   margin: 0 0 20px;
+  animation: fadeRise 900ms ease both;
 }
 
 .hero p {
@@ -177,6 +245,7 @@ a {
   color: var(--muted);
   max-width: 520px;
   line-height: 1.6;
+  animation: fadeRise 1100ms ease both;
 }
 
 .hero-cta {
@@ -184,6 +253,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  animation: fadeRise 1200ms ease both;
 }
 
 .hero-metrics {
@@ -191,6 +261,7 @@ a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 14px;
+  animation: fadeRise 1400ms ease both;
 }
 
 .hero-metrics strong {
@@ -209,6 +280,7 @@ a {
   border-radius: 14px;
   border: 1px solid #232735;
   background: #12151d;
+  animation: softPulse 4s ease-in-out infinite;
 }
 
 .btn {
@@ -220,6 +292,8 @@ a {
   font-weight: 600;
   border: 1px solid transparent;
   transition: background 160ms ease, border 160ms ease, color 160ms ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
@@ -230,6 +304,19 @@ a {
 
 .btn-primary:hover {
   background: #ffffff;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transform: translateX(-120%);
+  transition: transform 500ms ease;
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
 }
 
 .btn-ghost {
@@ -260,6 +347,7 @@ a {
   border-radius: 14px;
   border: 1px solid #1f232d;
   display: block;
+  animation: softPulse 6s ease-in-out infinite;
 }
 
 .features {
@@ -269,6 +357,7 @@ a {
 .section-title {
   font-size: 28px;
   margin-bottom: 26px;
+  animation: fadeRise 800ms ease both;
 }
 
 .section-header {
@@ -278,6 +367,7 @@ a {
   gap: 18px;
   color: var(--muted);
   margin-bottom: 22px;
+  animation: fadeRise 800ms ease both;
 }
 
 .feature-slider {
@@ -296,6 +386,7 @@ a {
   padding-bottom: 6px;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
+  animation: fadeRise 900ms ease both;
 }
 
 .feature-track::-webkit-scrollbar {
@@ -310,6 +401,7 @@ a {
   min-height: 160px;
   transition: transform 200ms ease, border 200ms ease;
   scroll-snap-align: start;
+  animation: fadeRise 900ms ease both;
 }
 
 .feature-card:hover {
@@ -349,6 +441,7 @@ a {
   border: 1px solid #2a2f3a;
   background: #141720;
   transition: transform 200ms ease, border 200ms ease;
+  animation: fadeRise 900ms ease both;
 }
 
 .download-card:hover {
@@ -380,6 +473,17 @@ a {
   border-radius: 16px;
   padding: 20px;
   animation: fadeRise 900ms ease both;
+  position: relative;
+}
+
+.workflow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  animation: borderScan 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .workflow-card h3 {
@@ -421,6 +525,17 @@ a {
   display: grid;
   gap: 10px;
   animation: fadeRise 900ms ease both;
+  position: relative;
+}
+
+.showcase-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  animation: borderScan 5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .showcase-card img {
@@ -428,6 +543,7 @@ a {
   border-radius: 14px;
   border: 1px solid #1f232d;
   display: block;
+  animation: softPulse 7s ease-in-out infinite;
 }
 
 
@@ -454,6 +570,7 @@ a {
   gap: 12px;
   font-size: 13px;
   border-top: 1px solid #1f232d;
+  animation: fadeRise 900ms ease both;
 }
 
 @media (max-width: 800px) {
