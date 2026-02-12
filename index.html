@@ -21,7 +21,6 @@
           <a href="#workflow">Workflow</a>
           <a href="#showcase">Screens</a>
           <a href="#download">Download</a>
-          <a href="#faq">FAQ</a>
         </nav>
       </header>
 
@@ -65,7 +64,9 @@
           </div>
           <p class="section-copy">A browser that stays clean while giving you room to collaborate and customize.</p>
         </div>
-        <div class="feature-grid">
+        <div class="feature-slider">
+          <button class="slider-btn" type="button" data-scroll="features" data-dir="prev">‹</button>
+          <div class="feature-track" data-track="features">
           <div class="feature-card">
             <h3>Focus‑first UI</h3>
             <p>Minimal chrome, quick actions, and a distraction‑free layout that stays fast.</p>
@@ -106,6 +107,8 @@
             <h3>Control center</h3>
             <p>All important settings live in one action menu, not buried in tabs.</p>
           </div>
+          </div>
+          <button class="slider-btn" type="button" data-scroll="features" data-dir="next">›</button>
         </div>
       </section>
 
@@ -189,47 +192,23 @@
         </div>
       </section>
 
-      <section class="faq" id="faq">
-        <div class="section-header">
-          <div>
-            <p class="eyebrow">FAQ</p>
-            <h2 class="section-title">Answers, upfront</h2>
-          </div>
-          <p class="section-copy">Everything people ask before they switch.</p>
-        </div>
-        <div class="faq-grid">
-          <div class="faq-item">
-            <h4>Is Atlas focused on privacy?</h4>
-            <p>Yes. You get tracking protection plus site‑level controls so you can decide what loads.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Can I use Atlas for study groups?</h4>
-            <p>Collaboration mode is built for it. Rooms, shared notes, highlights, and live presence.</p>
-          </div>
-          <div class="faq-item">
-            <h4>How do themes work?</h4>
-            <p>Set a default midnight theme and switch palettes anytime from the actions menu.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Where do I get updates?</h4>
-            <p>Atlas checks for updates automatically and downloads the latest release when available.</p>
-          </div>
-          <div class="faq-item">
-            <h4>What platforms are supported?</h4>
-            <p>Windows and Linux are supported right now. macOS support is planned.</p>
-          </div>
-          <div class="faq-item">
-            <h4>Is it hard to migrate?</h4>
-            <p>Import bookmarks and get back to work fast with the same shortcuts you already use.</p>
-          </div>
-        </div>
-      </section>
-
       <footer class="footer">
         <div>Allout Atlas</div>
         <div>Built for speed, focus, and modern workflows.</div>
-        <div>© 2026 Allout Atlas</div>
+        <div>© 2026 Allout Atlas • Soft Vortex</div>
       </footer>
     </div>
   </body>
+  <script>
+    document.querySelectorAll("[data-scroll]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-scroll");
+        const dir = btn.getAttribute("data-dir");
+        const track = document.querySelector(`[data-track="${id}"]`);
+        if (!track) return;
+        const amount = Math.round(track.clientWidth * 0.9);
+        track.scrollBy({ left: dir === "next" ? amount : -amount, behavior: "smooth" });
+      });
+    });
+  </script>
 </html>
