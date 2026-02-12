@@ -13,7 +13,9 @@
     <div class="page">
       <header class="topbar">
         <div class="brand">
-          <span class="brand-mark"></span>
+          <span class="brand-mark">
+            <img src="./assets/logo.png" alt="Allout Atlas logo" />
+          </span>
           <span>Allout Atlas</span>
         </div>
         <nav class="nav">
@@ -35,26 +37,9 @@
             <a class="btn btn-ghost" href="#features">See features</a>
           </div>
         </div>
-        <div class="hero-card">
-          <div class="browser-mock">
-            <div class="browser-bar">
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="dot"></div>
-              <div class="address"></div>
-            </div>
-            <div class="browser-body">
-              <div>
-                <div class="panel-block"></div>
-                <div class="panel-block" style="margin-top: 12px;"></div>
-                <div class="panel-block" style="margin-top: 12px; height: 120px;"></div>
-              </div>
-              <div>
-                <div class="panel-block" style="height: 140px;"></div>
-                <div class="panel-block" style="margin-top: 12px;"></div>
-              </div>
-            </div>
-          </div>
+        <div class="hero-card hero-shot">
+          <img src="./assets/hero-screenshot.png" alt="Allout Atlas screenshot" loading="lazy" />
+          <div class="showcase-label">hero-screenshot.png</div>
         </div>
       </section>
 
@@ -87,59 +72,14 @@
           </div>
         </div>
       </section>
-
-      <section class="themes" id="themes">
+      <section class="showcase" id="showcase">
         <div class="section-header">
-          <h2 class="section-title">Themes</h2>
-          <p>Drop in your theme screenshots later. The slider is ready.</p>
+          <h2 class="section-title">Screenshot</h2>
+          <p>Replace the placeholder with your real hero screenshot.</p>
         </div>
-        <div class="theme-slider" aria-label="Theme previews">
-          <button class="slider-btn" type="button" aria-label="Scroll left">‹</button>
-          <div class="theme-track" id="theme-track">
-            <article class="theme-slide">
-              <div class="theme-shot">
-                <img src="./assets/theme-midnight.png" alt="Theme Midnight" loading="lazy" />
-                <div class="theme-shot-label">theme-midnight.png</div>
-              </div>
-              <div class="theme-meta">Dark · High contrast</div>
-            </article>
-            <article class="theme-slide">
-              <div class="theme-shot">
-                <img src="./assets/theme-dark.png" alt="Theme Dark" loading="lazy" />
-                <div class="theme-shot-label">theme-dark.png</div>
-              </div>
-              <div class="theme-meta">Neutral · Calm</div>
-            </article>
-            <article class="theme-slide">
-              <div class="theme-shot">
-                <img src="./assets/theme-slate.png" alt="Theme Slate" loading="lazy" />
-                <div class="theme-shot-label">theme-slate.png</div>
-              </div>
-              <div class="theme-meta">Monochrome · Balanced</div>
-            </article>
-            <article class="theme-slide">
-              <div class="theme-shot">
-                <img src="./assets/theme-ocean.png" alt="Theme Ocean" loading="lazy" />
-                <div class="theme-shot-label">theme-ocean.png</div>
-              </div>
-              <div class="theme-meta">Cool · Focus</div>
-            </article>
-            <article class="theme-slide">
-              <div class="theme-shot">
-                <img src="./assets/theme-forest.png" alt="Theme Forest" loading="lazy" />
-                <div class="theme-shot-label">theme-forest.png</div>
-              </div>
-              <div class="theme-meta">Earth · Soft</div>
-            </article>
-            <article class="theme-slide">
-              <div class="theme-shot">
-                <img src="./assets/theme-amber.png" alt="Theme Amber" loading="lazy" />
-                <div class="theme-shot-label">theme-amber.png</div>
-              </div>
-              <div class="theme-meta">Warm · Late night</div>
-            </article>
-          </div>
-          <button class="slider-btn" type="button" aria-label="Scroll right">›</button>
+        <div class="showcase-card">
+          <img src="./assets/hero-screenshot.png" alt="Allout Atlas screenshot" loading="lazy" />
+          <div class="showcase-label">hero-screenshot.png</div>
         </div>
       </section>
 
@@ -169,17 +109,5 @@
         <div>Built for speed, focus, and modern workflows.</div>
       </footer>
     </div>
-    <script>
-      const track = document.getElementById('theme-track');
-      const sliderButtons = Array.from(document.querySelectorAll('.slider-btn'));
-      sliderButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          if (!track) return;
-          const direction = button.textContent.includes('‹') ? -1 : 1;
-          const slideWidth = track.querySelector('.theme-slide')?.offsetWidth || 240;
-          track.scrollBy({ left: direction * (slideWidth + 14), behavior: 'smooth' });
-        });
-      });
-    </script>
   </body>
 </html>
