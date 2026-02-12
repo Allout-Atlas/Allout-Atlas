@@ -88,6 +88,61 @@
         </div>
       </section>
 
+      <section class="themes" id="themes">
+        <div class="section-header">
+          <h2 class="section-title">Themes</h2>
+          <p>Drop in your theme screenshots later. The slider is ready.</p>
+        </div>
+        <div class="theme-slider" aria-label="Theme previews">
+          <button class="slider-btn" type="button" aria-label="Scroll left">‹</button>
+          <div class="theme-track" id="theme-track">
+            <article class="theme-slide">
+              <div class="theme-shot">
+                <img src="./assets/theme-midnight.png" alt="Theme Midnight" loading="lazy" />
+                <div class="theme-shot-label">theme-midnight.png</div>
+              </div>
+              <div class="theme-meta">Dark · High contrast</div>
+            </article>
+            <article class="theme-slide">
+              <div class="theme-shot">
+                <img src="./assets/theme-dark.png" alt="Theme Dark" loading="lazy" />
+                <div class="theme-shot-label">theme-dark.png</div>
+              </div>
+              <div class="theme-meta">Neutral · Calm</div>
+            </article>
+            <article class="theme-slide">
+              <div class="theme-shot">
+                <img src="./assets/theme-slate.png" alt="Theme Slate" loading="lazy" />
+                <div class="theme-shot-label">theme-slate.png</div>
+              </div>
+              <div class="theme-meta">Monochrome · Balanced</div>
+            </article>
+            <article class="theme-slide">
+              <div class="theme-shot">
+                <img src="./assets/theme-ocean.png" alt="Theme Ocean" loading="lazy" />
+                <div class="theme-shot-label">theme-ocean.png</div>
+              </div>
+              <div class="theme-meta">Cool · Focus</div>
+            </article>
+            <article class="theme-slide">
+              <div class="theme-shot">
+                <img src="./assets/theme-forest.png" alt="Theme Forest" loading="lazy" />
+                <div class="theme-shot-label">theme-forest.png</div>
+              </div>
+              <div class="theme-meta">Earth · Soft</div>
+            </article>
+            <article class="theme-slide">
+              <div class="theme-shot">
+                <img src="./assets/theme-amber.png" alt="Theme Amber" loading="lazy" />
+                <div class="theme-shot-label">theme-amber.png</div>
+              </div>
+              <div class="theme-meta">Warm · Late night</div>
+            </article>
+          </div>
+          <button class="slider-btn" type="button" aria-label="Scroll right">›</button>
+        </div>
+      </section>
+
       <section class="download" id="download">
         <h2 class="section-title">Download</h2>
         <div class="download-grid">
@@ -114,5 +169,17 @@
         <div>Built for speed, focus, and modern workflows.</div>
       </footer>
     </div>
+    <script>
+      const track = document.getElementById('theme-track');
+      const sliderButtons = Array.from(document.querySelectorAll('.slider-btn'));
+      sliderButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          if (!track) return;
+          const direction = button.textContent.includes('‹') ? -1 : 1;
+          const slideWidth = track.querySelector('.theme-slide')?.offsetWidth || 240;
+          track.scrollBy({ left: direction * (slideWidth + 14), behavior: 'smooth' });
+        });
+      });
+    </script>
   </body>
 </html>
